@@ -1,4 +1,22 @@
 package francescocossu.u5w3d5.payloads;
 
-public record EventoDTO() {
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDateTime;
+
+public record EventoDTO(
+
+        @NotBlank
+        String titolo,
+        @NotBlank
+        String descrizione,
+        @Future
+        LocalDateTime data,
+        @NotBlank
+        String luogo,
+        @NotNull
+        int postiDisponibili,
+        String emailOrganizzatore) {
 }

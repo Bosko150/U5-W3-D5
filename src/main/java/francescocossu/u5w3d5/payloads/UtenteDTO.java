@@ -4,6 +4,8 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 public record UtenteDTO(
+        @NotBlank(message = "Username cannot be empty")
+        String username,
         @NotBlank(message = "Name cannot be empty")
         String nome,
         @NotBlank(message = "Surname cannot be empty")

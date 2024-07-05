@@ -13,8 +13,8 @@ import lombok.Setter;
 public class UtenteBase extends Utente {
 
 
-    public UtenteBase(String nome, String cognome, String password, String email) {
-        super(nome, cognome, password, email, Ruolo.UTENTE);
+    public UtenteBase(String username, String nome, String cognome, String password, String email) {
+        super(username, nome, cognome, password, email, Ruolo.UTENTE);
 
     }
 }

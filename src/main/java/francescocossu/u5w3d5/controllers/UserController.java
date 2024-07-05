@@ -31,7 +31,7 @@ public class UserController {
         userService.deleteUtenteById(currentlyAuthUser.getId());
     }
 
-    @GetMapping("/me/eventi")
+    @GetMapping("/me/prenotazioni")
     public List<Evento> getEventi(@AuthenticationPrincipal Utente currentlyAuthUser) {
         return currentlyAuthUser.getEventiPrenotati();
     }
