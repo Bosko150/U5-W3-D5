@@ -20,6 +20,10 @@ public class UserService {
     @Autowired
     private UtenteRepository utenteRepository;
 
+    public Utente saveUser(Utente user) {
+        return utenteRepository.save(user);
+    }
+
     public UtenteBase saveUtenteBase(UtenteDTO utentePayload) {
         this.utenteRepository.findByEmail(utentePayload.email()).ifPresent(employee -> {
             throw new IllegalArgumentException("Email già in uso");
@@ -27,7 +31,7 @@ public class UserService {
 
         UtenteBase utenteBase = new UtenteBase(utentePayload.username(), utentePayload.nome(), utentePayload.cognome(), bcrypt.encode(utentePayload.password()), utentePayload.email());
 
-        return this.utenteRepository.save(utenteBase);
+        return (UtenteBase) saveUser(utenteBase);
     }
 
     public Organizzatore saveOrganizzatore(UtenteDTO utentePayload) {
@@ -37,7 +41,7 @@ public class UserService {
 
         Organizzatore organizzatore = new Organizzatore(utentePayload.username(), utentePayload.nome(), utentePayload.cognome(), bcrypt.encode(utentePayload.password()), utentePayload.email());
 
-        return this.utenteRepository.save(organizzatore);
+        return (Organizzatore) saveUser(organizzatore);
     }
 
     public Utente getUtentebyId(UUID id) {
