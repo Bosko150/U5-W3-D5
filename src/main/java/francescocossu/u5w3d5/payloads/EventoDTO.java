@@ -17,6 +17,5 @@ public record EventoDTO(
         @NotBlank
         String luogo,
         @NotNull
-        int postiDisponibili,
-        String emailOrganizzatore) {
+        int postiDisponibili) {
 }

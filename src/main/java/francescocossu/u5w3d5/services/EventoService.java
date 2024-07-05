@@ -16,11 +16,13 @@ public class EventoService {
     @Autowired
     private UserService userService;
 
-    public Evento creaEvento(EventoDTO evento) {
-        Utente organizzatore = userService.findByEmail(evento.emailOrganizzatore());
+    public Evento creaEvento(EventoDTO eventoPayload, Utente organizzatore) {
+        Utente utente = userService.getUtentebyId(organizzatore.getId());
+        Evento nuovoEvento = new Evento(eventoPayload.titolo(), eventoPayload.descrizione(), eventoPayload.data(), eventoPayload.luogo(), eventoPayload.postiDisponibili(), utente);
+        eventoRepository.save(nuovoEvento);
 
-        Evento nuovoEvento = new Evento(evento.titolo(), evento.descrizione(), evento.data(), evento.luogo(), evento.postiDisponibili(), organizzatore);
-        return this.eventoRepository.save(nuovoEvento);
+
+        return nuovoEvento;
     }
 
 

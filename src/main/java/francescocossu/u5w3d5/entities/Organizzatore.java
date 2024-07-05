@@ -1,5 +1,6 @@
 package francescocossu.u5w3d5.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
@@ -14,6 +15,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class Organizzatore extends Utente {
+    @JsonBackReference
     @OneToMany(mappedBy = "organizzatore")
     private List<Evento> eventiOrganizzati;
 
